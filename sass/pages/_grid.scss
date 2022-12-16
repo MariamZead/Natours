@@ -1,0 +1,44 @@
+.row {
+  max-width: $grid-width;
+  margin: 0 auto; /* to center the block */
+  display: grid;
+  align-items: start;
+  grid-gap: $gutter-horizontal;
+
+  &:not(:last-child) {
+    margin-bottom: $gutter-vertical;
+
+    @include respond(tab-port) {
+      margin-bottom: $gutter-vertical-small;
+    }
+  }
+
+  @include respond(tab-port) {
+    max-width: 50rem;
+    padding: 0 3rem;
+  }
+
+  &_two-col {
+    grid-template-columns: repeat(2, 1fr);
+
+    @include respond(tab-port) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &_three-col {
+    grid-template-columns: repeat(3, 1fr);
+
+    @include respond(tab-port) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &_four-col {
+    grid-template-columns: repeat(4, 1fr);
+
+    @include respond(tab-port) {
+      grid-template-columns: 1fr;
+    }
+  }
+}

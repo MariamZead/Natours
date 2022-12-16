@@ -1,0 +1,18 @@
+.myVideo {
+  position: absolute; // the vid will be behind the elements
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1; // to make sure the video will be behind the elements
+  opacity: .15;
+  overflow: hidden;
+
+  &__content {
+    height: 100%;
+    width: 100%;
+
+    // it will cove the parenet element while still maintaing its aspect ratio
+    object-fit: cover; // similar to background-size : cover
+  }
+}

@@ -1,0 +1,85 @@
+.story {
+  width: 75%;
+  margin: 0 auto;
+  box-shadow: 0 3rem 6rem rgba($color-black, 0.1);
+  background-color: rgba($color-white, 0.6);
+  border-radius: 3px;
+  padding: 6rem;
+  padding-left: 9rem; // to move the enteir box to the left little bit
+  font-size: $default-font-size;
+  transform: skewX(-12deg);
+  position: relative; //  for the caption
+
+  @include respond(tab-port) {
+    width: 100%;
+    padding: 4rem;
+    padding-left: 7rem;
+  }
+
+  @include respond(phone) {
+    transform: skewX(0);
+  }
+
+  &__card {
+    width: 15rem;
+    height: 15rem;
+    float: left; // this only works if the element has defined dimensions, (width and height)
+
+    clip-path: circle(50% at 50% 50%);
+    -webkit-clip-path: circle(50% at 50% 50%);
+
+    shape-outside: circle(
+      50% at 50% 50%
+    ); // in order for this to work , the element must be floated
+    -webkit-shape-outside: circle(50% at 50% 50%);
+
+    // the best way to move around an floated element
+    transform: translateX(-3rem) skewX(12deg); // making only the card scaled and all the element inside it not scaled
+
+    @include respond(phone) {
+      transform: translateX(-3rem) skewX(0);
+    }
+  }
+
+  &__img {
+    background-size: cover;
+    height: 100%; // that will be 100% of the parent (shape)
+    transform: translateX(-4rem) scale(1.4); // the img need to be more in the center
+    transition: all 0.5s;
+
+    @include respond(phone) {
+      transform: translateX(-3rem) skewX(0);
+    }
+  }
+
+  // when the story is hovered we need to change the img state
+  &:hover &__img {
+    transform: translateX(-4rem) scale(1); // the img need to be more in the center
+    filter: blur(3px) brightness(80%); // to make it blur and darker
+  }
+
+  &__caption {
+    @include centeringBlock;
+    color: $color-white;
+    text-transform: uppercase;
+    font-size: 1.7rem;
+    text-align: center;
+    opacity: 0;
+    transition: all 0.5s;
+    //backface-visibility: hidden; // just to fix the small glitch
+  }
+
+  // when the story is hovered we need to change the caption state
+  &:hover &__caption {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+
+  &__text {
+    transform: skewX(12deg);
+
+    @include respond(phone) {
+      transform: skewX(0);
+    }
+  }
+}
